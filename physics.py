@@ -1,3 +1,5 @@
+'''Physics module for collision handling'''
+
 #
 # This file is part of elements project.
 #
@@ -28,18 +30,33 @@ class Space:
 
     def start_sync(self):
         '''Start controlling game time'''
-        pass
-
-    def stop_sync(self):
-        '''Stop controlling game time'''
-        pass
-
-    def handle_collisions(self, sprite, group):
-        '''Handle all sprite collisions in game'''
-        pass
-
-    def handle_event(self, type):
         try:
             raise NotImplementedError
         except NotImplementedError:
             print("Option not already implemented.")
+
+    def stop_sync(self):
+        '''Stop controlling game time'''
+        try:
+            raise NotImplementedError
+        except NotImplementedError:
+            print("Option not already implemented.")
+
+    def handle_collisions(self):
+        '''Handle all sprite collisions in game'''
+        try:
+            raise NotImplementedError
+        except NotImplementedError:
+            print("Option not already implemented.")
+
+    def handle_event(self):
+        '''Function to handle event over a space with its sprites'''
+        try:
+            raise NotImplementedError
+        except NotImplementedError:
+            print("Option not already implemented.")
+
+
+def handle_collisions(element, group):
+    '''Collisions handling object generator'''
+    return {'e': element, 'g': group}

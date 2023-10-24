@@ -1,3 +1,5 @@
+'''Sprites instances and handling module'''
+
 #
 # This file is part of elements project.
 #
@@ -21,23 +23,9 @@
 import os
 
 
-def handle_collisions(element, group):
-    return []
+class Element:
+    '''Elements Base Class'''
 
-
-def change_score(space, element, group, discount):
-    if len(handle_collisions(element, group)) > 1:
-        element.hurt(discount)
-
-
-def best_score(space, character, group):
-    try:
-        raise NotImplementedError
-    except NotImplementedError:
-        print("Option not already implemented.")
-
-
-class Element():
     def __init__(self, token, name):
         self.token = token
         self.name = name
@@ -54,11 +42,11 @@ class Element():
         return r
 
 
-class ElementSprite():
-    collided = False
+class ElementSprite:
     '''Elements Character Class'''
+    collided = False
 
-    def __init__(self, figure, animvet, posinit=[0, 0], video=[800, 600], size=[256, 192], hitpoints=100):
+    def __init__(self, figure, animvet, posinit, video, hitpoints=100):
         '''Initialize the variables of Character'''
         self.speed = [1, 0]
         self.count = 0
@@ -68,10 +56,12 @@ class ElementSprite():
         self.pos = posinit
         self.anim = animvet
         self.hitpoints = hitpoints
-        self.element_image(figure, size[0], size[1])
+        self.element_image(figure)
+        self.rect = self.rect.move(self.speed)
 
-    def element_image(self, figure, width, height):
-        figure = os.path.abspath(os.path.join("euphoria", figure))
+    def element_image(self, figure):
+        '''Generates absolute path over appointed figure'''
+        return os.path.abspath(os.path.join("elements", figure))
 
     def hurt(self, wound):
         '''Reduces character's hit points'''
@@ -104,7 +94,6 @@ class ElementSprite():
 
     def update(self):
         '''Moves the sprite and animate'''
-        self.rect = self.rect.move(self.speed)
         self.draw_anim()
         if self.rect.left < 0 or self.rect.right > self.width:
             self.speed[0] = -self.speed[0]
