@@ -18,9 +18,7 @@
 #
 
 import os
-# import platform
-# from .graphics import *
-# from .physics import *
+from .physics import *
 
 def handle_collisions(element, group):
 	return []
@@ -48,10 +46,9 @@ class Element():
 
 class ElementSprite():
 	collided = False
-	'''Euphoria Character Class'''
+	'''Elements Character Class'''
 	def __init__(self,figure,animvet,posinit=[0,0],video=[800,600],size=[256,192],hitpoints=100):
 		'''Initialize the variables of Character'''
-		#pygame.sprite.Sprite.__init__(self)
 		self.speed = [1,0]
 		self.count = 0
 		self.tick = 15
@@ -61,10 +58,10 @@ class ElementSprite():
 		self.anim = animvet
 		self.hitpoints = hitpoints
 		self.element_image(figure,size[0],size[1])
+
 	def element_image(self,figure,width,height):
 		figure = os.path.abspath(os.path.join("euphoria",figure))
-		# self.image = pygame.image.load(figure).convert()
-		# self.rect = Rect(self.pos[0],self.pos[1],height,width)
+
 	def hurt(self,wound):
 		'''Reduces character's hit points'''
 		self.hitpoints -= wound
@@ -79,7 +76,6 @@ class ElementSprite():
 		'''Animates the character'''
 		if self.count != len(self.anim):
 			if self.tick == 0:
-				#self.image = pygame.image.load(self.anim[self.count]).convert()	
 				self.tick = 15; self.count += 1
 			else:
 				self.tick -= 1

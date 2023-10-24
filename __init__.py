@@ -17,4 +17,4 @@
 # along with elements.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-__all__ = ["audio", "graphics", "physics", "ranking", "sprites"]
+__all__ = ["physics", "ranking", "sprites"]
