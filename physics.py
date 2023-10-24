@@ -1,7 +1,7 @@
 #
 # This file is part of elements project.
-# 
-# Copyright (C) 2009-2011 William Oliveira de Lagos <william.lagos@icloud.com>
+#
+# Copyright (C) 2009-2023 William Oliveira de Lagos <william.lagos@icloud.com>
 #
 # Elements is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,22 +19,27 @@
 
 
 class Space:
-	'''Elements Space Class'''
-	def __init__(self):
-		'''Initialize Physics and Events'''
-		self.events = []
-		self.frames = 30
-	def start_sync(self):
-		'''Start controlling game time'''
-		pass
-	def stop_sync(self):
-		'''Stop controlling game time'''
-		pass
-	def handle_collisions(self,sprite,group):
-		'''Handle all sprite collisions in game'''
-		pass
-	def handle_event(self, type):
-		try:
-			raise NotImplementedError
-		except NotImplementedError:
-			print("Option not already implemented.")
+    '''Elements Space Class'''
+
+    def __init__(self):
+        '''Initialize Physics and Events'''
+        self.events = []
+        self.frames = 30
+
+    def start_sync(self):
+        '''Start controlling game time'''
+        pass
+
+    def stop_sync(self):
+        '''Stop controlling game time'''
+        pass
+
+    def handle_collisions(self, sprite, group):
+        '''Handle all sprite collisions in game'''
+        pass
+
+    def handle_event(self, type):
+        try:
+            raise NotImplementedError
+        except NotImplementedError:
+            print("Option not already implemented.")
