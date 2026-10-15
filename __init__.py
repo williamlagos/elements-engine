@@ -19,4 +19,21 @@
 # along with elements.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-__all__ = ["physics", "ranking", "structures", "sprites"]
+__all__ = ["physics", "ranking", "structures", "sprites", "HAS_CPP_CORE", "CppElement", "CppElements", "IntMatrix", "FloatMatrix", "Codes"]
+
+try:
+    import _elements
+    HAS_CPP_CORE = True
+    CppElement = _elements.Element
+    CppElements = _elements.Elements
+    IntMatrix = _elements.IntMatrix
+    FloatMatrix = _elements.FloatMatrix
+    Codes = _elements.Codes
+except ImportError:
+    _elements = None
+    HAS_CPP_CORE = False
+    CppElement = None
+    CppElements = None
+    IntMatrix = None
+    FloatMatrix = None
+    Codes = None

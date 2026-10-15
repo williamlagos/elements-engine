@@ -22,6 +22,20 @@
 
 from .physics import handle_collisions
 
+try:
+    import _elements
+    HAS_CPP_CORE = True
+except ImportError:
+    _elements = None
+    HAS_CPP_CORE = False
+
+
+def create_codes():
+    '''Creates an instance of the C++ Codes Quadtree spatial encoder if available'''
+    if HAS_CPP_CORE:
+        return _elements.Codes()
+    return None
+
 
 def change_score(element, group, discount):
     '''Change score according to collisions handling'''
